@@ -1,0 +1,14 @@
+name: D2MC
+version: '${version}'
+main: org.d2mc.DestinyMC
+api-version: '1.19'
+commands:
+  getabilities:
+    usage: /getabilities
+    aliases: gb
+  setclass:
+    usage: /setclass <class>
+    aliases: sc
+  guardian:
+    usage: /guardian
+    aliases: guard

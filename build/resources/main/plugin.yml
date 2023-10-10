@@ -1,0 +1,11 @@
+name: D2MC
+version: '0.2-ALPHA'
+main: org.d2mc.DestinyMC
+api-version: '1.19'
+commands:
+  getabilities:
+    usage: /getabilities
+    aliases: gb
+  setclass:
+    usage: /setclass <class>
+    aliases: sc
