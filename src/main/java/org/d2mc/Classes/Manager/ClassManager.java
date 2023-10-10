@@ -47,12 +47,16 @@ public class ClassManager implements IClassManager {
 
     @Override
     public String getGuardianName() {
-        return null;
+        if (this.playerClass.getName() == null) {
+            return "null";
+        } else {
+            return "not null";
+        }
     }
 
     @Override
     public void setClass(Player guardian, Class playerClass) {
-        DestinyMC.playerWithClassList.put(guardian, playerClass);
+        DestinyMC.playerWithClassMap.put(guardian, playerClass);
     }
 
 }

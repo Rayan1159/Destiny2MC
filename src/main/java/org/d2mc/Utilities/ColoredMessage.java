@@ -5,13 +5,7 @@ import org.bukkit.Color;
 
 public class ColoredMessage {
 
-    private final String message;
-
-    public ColoredMessage(String message) {
-        this.message = message;
-    }
-
     public String colorTranslate(String message) {
-        return ChatColor.translateAlternateColorCodes('&', this.message);
+        return ChatColor.translateAlternateColorCodes('&', message);
     }
 }

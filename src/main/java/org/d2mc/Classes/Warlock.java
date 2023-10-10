@@ -27,4 +27,9 @@ public class Warlock extends ClassManager implements Class {
     public void setHealth() {
         this.guardian.setHealth(this.guardian.getHealth());
     }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }

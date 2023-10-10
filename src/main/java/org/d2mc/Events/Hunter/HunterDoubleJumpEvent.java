@@ -7,26 +7,39 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerVelocityEvent;
 import org.d2mc.Classes.Hunter;
 import org.d2mc.Classes.Manager.ClassManager;
+import org.d2mc.DestinyMC;
+import org.d2mc.Utilities.ColoredMessage;
 
 import java.lang.reflect.InvocationTargetException;
 
 //TODO Further implementation of this class
 public class HunterDoubleJumpEvent implements Listener {
 
-    private final ClassManager classManager;
+    private ClassManager classManager;
+    private ColoredMessage coloredMessage;
     public boolean canDoubleJump = true;
 
-    public HunterDoubleJumpEvent(Player guardian) {
-        this.classManager = new ClassManager(new Hunter(guardian));
+
+    public HunterDoubleJumpEvent() {
+        this.coloredMessage = new ColoredMessage();
     }
 
     @EventHandler
     public void onHunterDoubleJumpEvent(PlayerMoveEvent event) {
-        if (this.isRightClass()) {
-
-        } else {
-
-        }
+         try {
+             this.classManager = new ClassManager(new Hunter(event.getPlayer()));
+         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+             throw new RuntimeException(e);
+         }
+//        if (!this.classManager.isClassNull()) {
+//            if (this.isRightClass()) {
+//                //TODO Implement double jump
+//            } else {
+//                this.coloredMessage.colorTranslate("&cYou are not a hunter!");
+//            }
+//        } else {
+//            this.coloredMessage.colorTranslate("&cYou do not have a class");
+//        }
     }
 
     public boolean isRightClass() {

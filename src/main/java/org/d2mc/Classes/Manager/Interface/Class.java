@@ -6,6 +6,7 @@ public interface Class {
     public boolean canThrowGrenade = true;
     public String getAbilities();
     public void setHealth();
+    public String getName();
 
 }
 

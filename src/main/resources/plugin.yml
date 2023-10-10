@@ -12,3 +12,6 @@ commands:
   guardian:
     usage: /guardian
     aliases: guard
+  class:
+    usage: /class
+    aliases: c

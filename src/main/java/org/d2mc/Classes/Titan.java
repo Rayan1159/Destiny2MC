@@ -28,4 +28,8 @@ public class Titan extends ClassManager implements Class {
     public void setHealth() {
         this.guardian.setHealth(this.guardian.getHealth());
     }
+
+    public String getName() {
+        return null;
+    }
 }

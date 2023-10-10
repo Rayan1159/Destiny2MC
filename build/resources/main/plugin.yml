@@ -9,3 +9,9 @@ commands:
   setclass:
     usage: /setclass <class>
     aliases: sc
+  guardian:
+    usage: /guardian
+    aliases: guard
+  class:
+    usage: /class
+    aliases: c

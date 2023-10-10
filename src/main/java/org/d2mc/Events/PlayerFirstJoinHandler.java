@@ -18,8 +18,6 @@ public class PlayerFirstJoinHandler implements Listener {
         if (!event.getPlayer().hasPlayedBefore()) {
 
         }
-        ColoredMessage message = new ColoredMessage("&cYou're playing on an 0.2-ALPHA Desinty 2 gamemode minecraft server");
-        player.sendMessage(message.toString());
     }
 
     public void openClassSelectionMenu() {

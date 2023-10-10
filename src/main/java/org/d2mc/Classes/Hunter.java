@@ -4,14 +4,17 @@ import org.bukkit.entity.Player;
 import org.d2mc.Classes.Manager.ClassManager;
 import org.d2mc.Classes.Manager.Interface.Class;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Hunter extends ClassManager implements Class {
     public ArrayList<String> abilities = new ArrayList<>();
-    private final Player guardian;
+    private Player guardian;
 
-    public Hunter(Player guardian) {
-        super(new Hunter(guardian));
+    public Hunter(Player guardian) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        super(Hunter.class.getDeclaredConstructor().newInstance());
         this.guardian = guardian;
     }
 
@@ -32,7 +35,17 @@ public class Hunter extends ClassManager implements Class {
     }
 
     @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
     public Class getGuardianClass() {
-        return new Hunter(this.guardian);
+        try {
+            return new Hunter(this.guardian);
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
