@@ -1,7 +1,7 @@
 package org.d2mc.Classes.Manager;
 
 import org.bukkit.entity.Player;
-import org.checkerframework.checker.units.qual.C;
+import org.d2mc.Classes.Hunter;
 import org.d2mc.Classes.Manager.Interface.Class;
 import org.d2mc.Classes.Manager.Interface.IClassManager;
 import org.d2mc.DestinyMC;
@@ -12,14 +12,15 @@ import java.lang.reflect.InvocationTargetException;
 //The D2MC Class Manager
 //This class is used to manage the mechanics, abilities and  of t
 public class ClassManager implements IClassManager {
-    private final Class playerClass;
-
-    public ClassManager(Class playerClass) {
-        this.playerClass = playerClass;
+    private Class selectedClass;
+    public ClassManager(Player guardian, String classToSelect) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        if (classToSelect.equals("hunter")) {
+            this.selectedClass = new Hunter(guardian);
+        }
     }
 
     public String getAbilities() {
-        return this.playerClass.getAbilities();
+        return this.selectedClass.getAbilities();
     }
 
     public String getGuardianName(Player guardian) {
@@ -27,12 +28,12 @@ public class ClassManager implements IClassManager {
     }
 
     public void setHealth() {
-        this.playerClass.setHealth();
+        this.selectedClass.setHealth();
     }
 
     @Override
     public Class getGuardianClass() throws InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        return this.playerClass.getClass().getDeclaredConstructor().newInstance();
+        return this.selectedClass.getClass().getDeclaredConstructor().newInstance();
     }
 
     @Override
@@ -47,11 +48,7 @@ public class ClassManager implements IClassManager {
 
     @Override
     public String getGuardianName() {
-        if (this.playerClass.getName() == null) {
-            return "null";
-        } else {
-            return "not null";
-        }
+        return this.selectedClass.getName();
     }
 
     @Override

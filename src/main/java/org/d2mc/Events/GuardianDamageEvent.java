@@ -12,7 +12,6 @@ public class GuardianDamageEvent implements Listener {
     @EventHandler
     public void onGuardianDamageEvent(EntityDamageEvent event) {
         Player guardian = (Player) event.getEntity();
-        ClassManager manager = new ClassManager(DestinyMC.playerWithClassMap.get(guardian));
     }
 
 }

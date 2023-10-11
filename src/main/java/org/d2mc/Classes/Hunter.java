@@ -9,43 +9,28 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Hunter extends ClassManager implements Class {
+public class Hunter implements Class {
     public ArrayList<String> abilities = new ArrayList<>();
     private Player guardian;
+    private ClassManager classManager;
 
-    public Hunter(Player guardian) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        super(Hunter.class.getDeclaredConstructor().newInstance());
+    public Hunter(Player guardian) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.guardian = guardian;
     }
 
+
+    @Override
     public String getAbilities() {
-        this.abilities.add("Gunslinger");
-        this.abilities.add("Bladedancer");
-        this.abilities.add("Nightstalker");
-        return String.join("\n", this.abilities);
+        return null;
     }
 
     @Override
-    public String getGuardianName() {
-        return this.guardian.getName();
-    }
-
     public void setHealth() {
-        this.guardian.setHealth(this.guardian.getHealth());
+
     }
 
     @Override
     public String getName() {
-        return null;
-    }
-
-    @Override
-    public Class getGuardianClass() {
-        try {
-            return new Hunter(this.guardian);
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return "uwu";
     }
 }

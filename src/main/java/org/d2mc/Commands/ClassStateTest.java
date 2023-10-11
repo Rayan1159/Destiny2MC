@@ -18,8 +18,8 @@ public class ClassStateTest implements CommandExecutor {
         if (sender instanceof Player) {
             Player guardian = (Player) sender;
             try {
-                this.manager = new ClassManager(new Hunter(guardian));
-                this.manager.getGuardianName();
+                this.manager = new ClassManager(guardian, "hunter");
+                guardian.sendMessage(this.manager.getGuardianName());
             } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }

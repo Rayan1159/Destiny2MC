@@ -26,11 +26,6 @@ public class HunterDoubleJumpEvent implements Listener {
 
     @EventHandler
     public void onHunterDoubleJumpEvent(PlayerMoveEvent event) {
-         try {
-             this.classManager = new ClassManager(new Hunter(event.getPlayer()));
-         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
-             throw new RuntimeException(e);
-         }
 //        if (!this.classManager.isClassNull()) {
 //            if (this.isRightClass()) {
 //                //TODO Implement double jump
