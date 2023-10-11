@@ -3,15 +3,11 @@ package org.d2mc;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.d2mc.Classes.Manager.Interface.Class;
-import org.d2mc.Commands.ClassStateTest;
+import org.d2mc.Tests.ClassStateTestCommand;
 import org.d2mc.Config.DMCConfig;
 import org.d2mc.Events.Hunter.HunterDoubleJumpEvent;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
 
 public final class DestinyMC extends JavaPlugin {
 
@@ -21,10 +17,8 @@ public final class DestinyMC extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        //register event
         getServer().getPluginManager().registerEvents(new HunterDoubleJumpEvent(), this);
-        //register command
-        getCommand("class").setExecutor(new ClassStateTest());
+        getCommand("class").setExecutor(new ClassStateTestCommand());
     }
 
     @Override

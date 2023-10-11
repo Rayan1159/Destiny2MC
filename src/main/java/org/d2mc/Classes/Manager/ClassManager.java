@@ -23,10 +23,6 @@ public class ClassManager implements IClassManager {
         return this.selectedClass.getAbilities();
     }
 
-    public String getGuardianName(Player guardian) {
-        return guardian.getName();
-    }
-
     public void setHealth() {
         this.selectedClass.setHealth();
     }

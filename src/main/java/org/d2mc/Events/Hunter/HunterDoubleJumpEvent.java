@@ -26,20 +26,23 @@ public class HunterDoubleJumpEvent implements Listener {
 
     @EventHandler
     public void onHunterDoubleJumpEvent(PlayerMoveEvent event) {
-//        if (!this.classManager.isClassNull()) {
-//            if (this.isRightClass()) {
-//                //TODO Implement double jump
-//            } else {
-//                this.coloredMessage.colorTranslate("&cYou are not a hunter!");
-//            }
-//        } else {
-//            this.coloredMessage.colorTranslate("&cYou do not have a class");
-//        }
+        Player player = event.getPlayer();
+        try {
+            this.classManager = new ClassManager(event.getPlayer(), "hunter");
+            if (this.isRightClass(this.classManager)) {
+                if (player.isSneaking()) {
+                    player.setVelocity(player.getLocation().getDirection().multiply(1.5).setY(1));
+                    this.canDoubleJump = false;
+                }
+            }
+        } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
-    public boolean isRightClass() {
+    public boolean isRightClass(ClassManager classManager) {
         try {
-            return this.classManager.getGuardianClass() instanceof Hunter;
+            return classManager.getGuardianClass() instanceof Hunter;
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
         }
