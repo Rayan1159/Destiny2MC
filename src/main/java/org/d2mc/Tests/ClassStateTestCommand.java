@@ -10,7 +10,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.d2mc.Classes.Manager.ClassManager;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.api;
 import java.lang.reflect.InvocationTargetException;
+
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @CommandAlias("class|c")
 public class ClassStateTestCommand extends BaseCommand {
@@ -25,10 +31,12 @@ public class ClassStateTestCommand extends BaseCommand {
     public void onNameCommand() {
     }
 
+    @Test
+    @DisplayName("Test if this.manager is null")
     public ClassManager getManager(Player sender) {
         try {
             this.manager = new ClassManager(sender, "hunter");
-            return this.manager;
+            assertNull(this.manager);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
             e.printStackTrace();
         }

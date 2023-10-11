@@ -5,6 +5,10 @@ plugins {
 group = 'org.niveus'
 version = '0.2-ALPHA'
 
+test {
+    useJUnitPlatform()
+}
+
 repositories {
     mavenCentral()
     maven {
@@ -23,6 +27,8 @@ repositories {
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
     implementation "co.aikar:acf-bukkit:0.5.1-SNAPSHOT"
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 def targetJavaVersion = 17
