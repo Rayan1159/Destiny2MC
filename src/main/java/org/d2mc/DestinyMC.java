@@ -1,5 +1,6 @@
 package org.d2mc;
 
+import co.aikar.commands.BukkitCommandManager;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.d2mc.Classes.Manager.Interface.Class;
@@ -17,8 +18,7 @@ public final class DestinyMC extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new HunterDoubleJumpEvent(), this);
-        getCommand("class").setExecutor(new ClassStateTestCommand());
+        BukkitCommandManager.getCurrentCommandManager().registerCommand(new ClassStateTestCommand());
     }
 
     @Override

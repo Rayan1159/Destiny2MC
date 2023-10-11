@@ -15,10 +15,14 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven {
+        url = "https://repo.aikar.co/content/groups/aikar/"
+    }
 }
 
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
+    implementation "co.aikar:acf-bukkit:0.5.1-SNAPSHOT"
 }
 
 def targetJavaVersion = 17
