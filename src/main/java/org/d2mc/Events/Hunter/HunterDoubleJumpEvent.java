@@ -7,12 +7,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerVelocityEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.d2mc.Classes.Hunter;
 import org.d2mc.Classes.Manager.ClassManager;
 import org.d2mc.DestinyMC;
 import org.d2mc.Utilities.ColoredMessage;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Vector;
 
 //TODO Further implementation of this class
 public class HunterDoubleJumpEvent implements Listener {
@@ -20,10 +22,12 @@ public class HunterDoubleJumpEvent implements Listener {
     private ClassManager classManager;
     private ColoredMessage coloredMessage;
     public boolean doubleJump = true;
+    private final DestinyMC plugin;
 
 
-    public HunterDoubleJumpEvent() {
+    public HunterDoubleJumpEvent(DestinyMC plugin) {
         this.coloredMessage = new ColoredMessage();
+        this.plugin = new DestinyMC();
     }
 
     @EventHandler
@@ -35,14 +39,14 @@ public class HunterDoubleJumpEvent implements Listener {
                 Location currentLocation = event.getTo();
                 if (currentLocation == null) return;
 
-                double deltaX = currentLocation.getX() - lastLocation.getX();
-                double deltaY = currentLocation.getY() - lastLocation.getY();
-                double deltaZ = currentLocation.getZ() - lastLocation.getZ();
-
-                if (this.canDoubleJump(player, deltaX, deltaY, deltaZ)) {
-                    player.setVelocity(player.getLocation().getDirection().multiply(0.5D).setY(1.0D));
-                    player.sendMessage("You have double jumped");
-                }
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        double deltaTime = 1.0; // You may need to adjust this value for your specific needs
+                        double deltaX = currentLocation.getX() - lastLocation.getX();
+                        double deltaY = currentLocation.getY() - lastLocation.getY();
+                        double deltaZ = currentLocation.getZ() - lastLocation.getZ();}
+                }.runTaskLater(this.plugin, 1);
 
             }
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
