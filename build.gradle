@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'groovy'
 }
 
 group = 'org.niveus'
@@ -28,8 +28,8 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:1.19.4-R0.1-SNAPSHOT"
     implementation "co.aikar:acf-bukkit:0.5.1-SNAPSHOT"
     implementation "org.mockito:mockito-core:3.+"
-    implementation 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    implementation 'org.junit.jupiter:junit-jupiter:5.6.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.0.0-M2'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.0.0-M2'
 }
 
 def targetJavaVersion = 17

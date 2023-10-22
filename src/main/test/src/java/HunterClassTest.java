@@ -10,31 +10,15 @@ import static org.mockito.Mockito.when;
 
 public class HunterClassTest {
 
-    private ClassManager classManager;
-
     @Test
     @DisplayName("Checks if the titan class is properly returned")
-    public void titanClassReturnTest() {
+    public void hunterClassTest() {
         Player player = Mockito.mock(Player.class);
         try {
-            this.classManager = this.manager(player, "titan");
-            when(this.classManager.getGuardianClass().toString()).thenReturn("Mocked Values");
-            String result = this.classManager.getGuardianClass().toString();
-            assert "Mocked Values".equals(this.classManager.getGuardianClass().toString()) : "The result is not equal to the expected value: " + result;
-        } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    @DisplayName("Checks if the warlock class is properly returned")
-    public void warlockClassReturnTest() {
-        Player player = Mockito.mock(Player.class);
-        try {
-            this.classManager = this.manager(player, "warlock");
-            when(this.classManager.getGuardianClass().toString()).thenReturn("Mocked Values");
-            String result = this.classManager.getGuardianClass().toString();
-            assert "Mocked Values".equals(result) : "The result is not equal to the expected value: " + result;
+            ClassManager classManager = this.manager(player, "hunter");
+            when(classManager.getGuardianClass().toString()).thenReturn("Mocked Values");
+            String result = classManager.getGuardianClass().toString();
+            assert "Mocked Values".equals(classManager.getGuardianClass().toString()) : "The result is not equal to the expected value: " + result;
         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
